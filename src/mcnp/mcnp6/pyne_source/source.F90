@@ -74,9 +74,12 @@ subroutine find_cell(cell_list, cell_list_size, icl_tmp, count_1, count_2, count
       if (cidx .eq. 0) then
         ! Type 1: cell index not found, skip and resampling
         count_1 = count_1 + 1
-        return
+        cycle
+        ! return
+      else
+        call chkcel(cidx, 0, j)
       endif
-      call chkcel(cidx, 0, j)
+      !call chkcel(cidx, 0, j)
       if (j .eq. 0) then
         ! valid cell found
         icl_tmp = cidx
